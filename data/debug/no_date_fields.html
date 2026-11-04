@@ -1,0 +1,1359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head id="Head1"><meta name="copyright" content="Copyright 2001-2017 Harris Recording Solutions.  All Rights Reserved."><meta name="robots" content="NOFOLLOW,NOINDEX"><link rel="stylesheet" href="Style/style.css" type="text/css"><link rel="stylesheet" href="Style/styleforsearch.css" type="text/css"><link id="favIcon" rel="Shortcut Icon" href="favicon.ico">
+<title>Welcome - Jackson County Public Access Search</title>
+<link rel="stylesheet" href="localization/styleFromCounty.css" type="text/css">
+    <script type="text/javascript" src="/ClientScript/Accessibility.js"></script>
+
+	<script type="text/javascript">
+	    var _helpWin = null;
+	    window.onunload = function () { try { _mstr_closePopupWindow(); } catch (e) { } };
+
+	    function _mstr_closePopupWindow() {
+	        if (_helpWin != null) {
+	            _helpWin.close();
+	        }
+	        try { _mstr_closeImageWindow(); } catch (e) { }
+	    }
+
+	    var _imgWindow = null;
+	    var optns =null;
+	    //window.onunload = function () {try{_mstr_closeImageWindow();}catch(e){}};
+	    function _openImgWindow(url) {
+	        //if (_imgWindow != null) {
+	        //    try {
+	        //        _imgWindow.location.href = url;
+	        //        try { _imgWindow.focus(); }
+	        //        catch (e) { }
+	        //    }
+	        //    catch (e) { _imgWindow = null; }
+	        //}
+	        if (optns == null) {
+	            var h = screen.height - 70;
+	            var w = screen.width;
+	            var l = w - 980;
+	            if (h > 730) h = 730;
+	            if (l < 10) l = 10;
+	            if (w > 950) w = 950;
+	            optns = "height=" + h.toString() + ",width=" + w.toString() + ",left=" + l.toString() + ",top=10,location=no,menubar=no,toolbar=no,resizable=yes";
+	            //alert(optns);
+	        }
+	        _imgWindow = window.open(url, "", optns, true);
+	        //
+	    }
+	    function _mstr_closeImageWindow() {
+	        if (_imgWindow != null) {
+	            _imgWindow.close();
+	            _imgWindow = null;
+	        }
+	    }
+	</script>
+
+
+	<script type="text/javascript" id="igClientScript1">
+	<!--
+	    function showSelectRange(sender, e) {
+	    	var x = sender.x; //e.clientX; //0;
+	    	var y = sender.y; //e.clientY; //0;
+	        //        try {
+	        //            y = SumOffsetTop(oToolbar.Element) + 9; //oToolbar.Elementment.offsetTop;
+	        //            x = SumOffsetLeft(oButton.Element) + 6; //.offsetLeft;
+	        //        }
+	        //        catch (e) { }
+	        var mnu = $IG.WebDataMenu.find('RangeContextMenu');
+	        if (mnu == null) { alert("no menu"); return; }
+	        if (x != null && x > 0)
+	        	mnu.showAt(x + 10, y + 10, e);
+	        else
+	            mnu.showAt(600, 200, e);
+	    }
+
+	    var dteRngFromClientID, dteRngToClientID, dteRngIcon;
+
+	    function showSelectRange(sender, e, rngFromId, rngToId) {
+	        dteRngFromClientID = rngFromId;
+	        dteRngToClientID = rngToId;
+	        dteRngIcon = sender;
+	        var x = sender.x; //e.clientX; //0;
+	        var y = sender.y; //e.clientY; //0;
+	        //        try {
+	        //            y = SumOffsetTop(oToolbar.Element) + 9; //oToolbar.Elementment.offsetTop;
+	        //            x = SumOffsetLeft(oButton.Element) + 6; //.offsetLeft;
+	        //        }
+	        //        catch (e) { }
+	        var mnu = $IG.WebDataMenu.find('RangeContextMenu');
+	        if (mnu == null) { alert("no menu"); return; }
+	        if (x != null && x > 0)
+	        	mnu.showAt(x + 10, y + 10, e);
+	        else
+	            mnu.showAt(600, 200, e);
+	    }
+
+
+
+	    function RangeContextMenu_ItemClick(sender, eventArgs) {
+	        ///<summary>
+	        ///
+	        ///</summary>
+	        ///<param name="sender" type="Infragistics.Web.UI.WebDataMenu"></param>
+	        ///<param name="eventArgs" type="Infragistics.Web.UI.DataMenuItemCancelEventArgs"></param>
+
+	        //Add code to handle your event here.
+	        var dte1, dte2;
+	        dte1 = $find(dteRngFromClientID);
+	        dte2 = $find(dteRngToClientID);
+	        if (dte1 == null || dte2 == null) return;
+
+	        if (sender == null) sender = $find('RangeContextMenu');
+
+	        if (dte1 != null && dte2 != null) {
+	            switch (sender._selectedItem.get_key()) {
+	                case "TODAY":
+	                    dte1.set_value(new Date(_today));
+	                    dte2.set_value(new Date(_today));
+	                    break;
+	                case "YESTERDAY":
+	                    dte1.set_value(new Date(_yesterday));
+	                    dte2.set_value(new Date(_yesterday));
+	                    break;
+	                case "THISWEEK":
+	                    dte1.set_value(new Date(_startwk1));
+	                    dte2.set_value(new Date(_today));
+	                    break;
+	                case "LASTWEEK":
+	                    dte1.set_value(new Date(_startwk2));
+	                    dte2.set_value(new Date(_endwk2));
+	                    break;
+	                case "THISMONTH":
+	                    dte1.set_value(new Date(_startmth1));
+	                    dte2.set_value(new Date(_today));
+	                    break;
+	                case "LASTMONTH":
+	                    dte1.set_value(new Date(_startmth2));
+	                    dte2.set_value(new Date(_endmth2));
+	                    break;
+	            }
+	        }
+	        if (dteRngIcon != null) dteRngIcon.focus();
+	    }// -->
+	</script>
+
+	<script type="text/javascript">
+	    function showOptionWindow(url, w) {
+	        var o = document.getElementById('ifrOptionWindow');
+	        if (o == null) {
+	            alert('Error: search frame not found!');
+	        }
+	        else {
+	            o.src = url; // "Controls/SearchNadr.aspx?docId=" + escape(docId) + "&idx=" + escape(idx) + "&type=" + escape(itemType);
+	        }
+
+	        var wdw = $find('dlgOptionWindow');
+	        wdw.set_width(w.toString() + 'px');
+	        wdw.set_windowState(0);
+	        //wdw.set_left('360px');
+	        //wdw.set_top('150px');
+
+	        return false;
+	    }
+	    function closeOptionDialog() {
+	        var wdw = $find('dlgOptionWindow');
+	        wdw.set_windowState(3);
+	        var o = document.getElementById('ifrOptionWindow');
+	        if (o != null) o.src = "";
+	    }
+	    function dlgOptionWindow_WindowStateChanged(sender, eventArgs) {
+	        //alert(sender.get_windowState());
+	        if (sender.get_windowState() == 3) {
+	            var o = document.getElementById('ifrOptionWindow');
+	            if (o != null) { o.src = ""; }
+	        }
+	    }
+	</script>
+
+	<script type="text/javascript">
+		function _mstr_getIFrContentDoc(ifrObj) {
+			var retVal = (ifrObj.contentDocument != null ? ifrObj.contentWindow : document.frames[ifrObj.id].window);
+			return retVal;
+		}
+
+		function _mstr_checkKey(event, mode) {
+			var key;
+			if (window.event) {
+				key = window.event.keyCode;
+			}
+			else {
+				key = event.which;
+			}
+			switch (mode) {
+				case 1: //page range
+					if (key < 48 || (key > 57)) {
+						if (key != 32 && key != 44 && key != 45) {
+							return false;
+						}
+					}
+					break;
+				case 2: //numeric
+					if (key < 48 || (key > 57)) {
+						return false;
+					}
+					break;
+			}
+			return true;
+		}
+
+		function _mstr_checkIfSearch(btnId, event) {
+			var key;
+			if (window.event) {
+				key = window.event.keyCode;
+			}
+			else {
+				key = event.which;
+			}
+			if (key == 13) {
+				var btn = ig_getWebControlById(btnId);
+				if (btn != null) {
+					//alert('no button ' + btnId); return;
+					//btn.set_postBack(1);
+					document.getElementById("__EVENTTARGET").value = escape(btnId).replace(/_/g, "$");
+					document.getElementById("__EVENTARGUMENT").value = "0";
+					document.forms[0].submit();
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function dlgInit(sender, eventArgs) {
+			dialog_accessibility(sender, eventArgs);
+		}
+	</script>
+<title>
+	
+</title><style id="igStyles" type="text/css"></style></head>
+
+<body>
+
+    <div style="display:none;"><a name="maincontent" title="skip to the main content area of this page">skip to the main content area of this page</a></div>
+         <a id="HomePageLink" class="CountyHeaderLink" aria-label="Link to main home page." href="WWW.JACKSONGOV.ORG">
+<div style="height:90px; border-bottom: 2px solid black; background-color:White; ">
+<table border="0">
+	<tbody><tr>
+		<td valign="top" colspan="1">
+		<img id="County1_Image1" title="County Banner" src="localization/JACO_records.gif" style="height:83px; width:1020px;"></td>
+<!--		<td style="padding-left:10px;"><div style="font-size:22pt;font-weight:bold;">Jackson County</div>
+		<div style="font-size:16pt;font-weight:bold;">Recorder of Deeds Test Web Access</div></td> -->
+	</tr>
+</tbody></table>
+</div>
+
+</a>   
+    <div id="_countyFrame">
+        <form method="post" action="./" onsubmit="javascript:return WebForm_OnSubmit();" id="form1" autocomplete="off">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" style="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" style="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTkzMzM0NzE2OA9kFgJmD2QWBAIBDw8WAh4LTmF2aWdhdGVVcmwFEldXVy5KQUNLU09OR09WLk9SR2RkAgIPZBYKAgMPZBYGAgQPDxYCHgRUZXh0ZWRkAgcPFgMWBw8WAh4OX2RhdGFLZXlGaWVsZHNlZGRkZGQXABYAZGRkAgkPDxYCHwFlZGQCBQ9kFgICBw8PFgIeB1Zpc2libGVoZGQCCw9kFgRmDxQrAAJkZGQCAQ8UKwAEFCsAAmRkZGQWAh4BdmdkAg0PFgMWBGRkFCsAAhYCHhBjb2xsZWN0aW9uc1N0YXRlBZsNW3snMCc6W1tudWxsLG51bGwsbnVsbCxudWxsLCJUb2RheSIsbnVsbCwiVE9EQVkiLCJqYXZhc2NyaXB0OlJhbmdlQ29udGV4dE1lbnVfSXRlbUNsaWNrKCk7IiwiIixudWxsLG51bGwsbnVsbCxudWxsLG51bGxdXSwnMSc6W1tudWxsLG51bGwsbnVsbCxudWxsLCJZZXN0ZXJkYXkiLG51bGwsIllFU1RFUkRBWSIsImphdmFzY3JpcHQ6UmFuZ2VDb250ZXh0TWVudV9JdGVtQ2xpY2soKTsiLCIiLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbF1dLCcyJzpbW251bGwsbnVsbCxudWxsLG51bGwsIlRoaXMgV2VlayIsbnVsbCwiVEhJU1dFRUsiLCJqYXZhc2NyaXB0OlJhbmdlQ29udGV4dE1lbnVfSXRlbUNsaWNrKCk7IiwiIixudWxsLG51bGwsbnVsbCxudWxsLG51bGxdXSwnMyc6W1tudWxsLG51bGwsbnVsbCxudWxsLCJMYXN0IFdlZWsiLG51bGwsIkxBU1RXRUVLIiwiamF2YXNjcmlwdDpSYW5nZUNvbnRleHRNZW51X0l0ZW1DbGljaygpOyIsIiIsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsXV0sJzQnOltbbnVsbCxudWxsLG51bGwsbnVsbCwiVGhpcyBNb250aCIsbnVsbCwiVEhJU01PTlRIIiwiamF2YXNjcmlwdDpSYW5nZUNvbnRleHRNZW51X0l0ZW1DbGljaygpOyIsIiIsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsXV0sJzUnOltbbnVsbCxudWxsLG51bGwsbnVsbCwiTGFzdCBNb250aCIsbnVsbCwiTEFTVE1PTlRIIiwiamF2YXNjcmlwdDpSYW5nZUNvbnRleHRNZW51X0l0ZW1DbGljaygpOyIsIiIsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsXV19LHsnLTEnOltbbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsIi0xIl1dLCcwJzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLCIwIl1dLCcxJzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLCIxIl1dLCcyJzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLCIyIl1dLCczJzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLCIzIl1dLCc0JzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLCI0Il1dLCc1JzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLCI1Il1dfV1kZA9kFgYPZhQrAAIUKwACFgQeAk4xZR4CTjllZGQPAgEUKwACFCsAAhYEHwZlHwdlZGQPAgIUKwACFCsAAhYEHwZlHwdlZGQPAgMUKwACFCsAAhYEHwZlHwdlZGQPAgQUKwACFCsAAhYEHwZlHwdlZGQPAgUUKwACFCsAAhYEHwZlHwdlZGRkZAIPD2QWBgICDw8WAh4BRWVkZAIKD2QWAgICD2QWBAICD2QWAgIDDxBkZBYAZAIDD2QWFAIDDzwrAAUBAhQrAAIWAh4LY2xpZW50U3RhdGUUKwABZGRkAgkPPCsABQECFCsAAhYCHwkUKwABZGRkAg8PPCsABQECFCsAAhYCHwkUKwABZGRkAhcPPCsABQECFCsAAhYCHwkUKwABZGRkAh8PEGRkFgFmZAIjDzwrAAUBAhQrAAIWAh8JFCsAAWRkZAIlDzwrAAUBAhQrAAIWAh8JFCsAAWRkZAIpDzwrAAUBAhQrAAIWAh8JFCsAAWRkZAIrDxBkZBYBZmQCLw88KwAFAQIUKwACFgIfCRQrAAFkZGQCCw9kFgICAg8WCRYCFgcPFgQeFWNvbHVtbnNJbnRlcm5hbEluaXRlZGgfAmVkZBQrAAIWBB8JPCsABAAfBQUtW3t9LHsnMCc6W1siZ3JpZEJhc2tldF9Ecm9wRG93blByb3ZpZGVyMSJdXX1dZGRkFwAWBRYCaBYEHgZERk5hbWUFDl9pbWdfTU9EVUxFX0lEHgZERlR5cGUFWlN5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4ORYCaBYEHwsFEl9pbWdfRE9DVU1FTlRfVFlQRR8MBVpTeXN0ZW0uU3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkWAmgWBB8LBRJfaW1nX1NFTlRfVE9fUVVFVUUfDAVaU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5FgJoFgQfCwUIRkVFVkFMVUUfDAVaU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5FgJoFgQfCwUFTm90ZXMfDAVaU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5ZA9kFhkPZhYCFgMWDh4CRjAFDUEyX1NFU1NJT05fSUQeBEJERjMFDFN5c3RlbS5JbnQzMh4EQkRGMAUNQTJfU0VTU0lPTl9JRB4DR0YxGwAAAAAAgFFAAQAAAB4OaGlkZGVuSW50ZXJuYWwLKYoBSW5mcmFnaXN0aWNzLldlYi5VSS5EZWZhdWx0YWJsZUJvb2xlYW4sIEluZnJhZ2lzdGljczQuV2ViLnYxMy4yLCBWZXJzaW9uPTEzLjIuMjAxMzIuMjI5NCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiAR4Pcm93U3BhbkludGVybmFsZh4WaGlkZGVuQnlQYXJlbnRJbnRlcm5hbGgWAmQFCVNlc3Npb24gIxYCZGVkDwIBFgIWAxYQHw0FCEJBVENIX0lEHw4FDFN5c3RlbS5JbnQzMh8PBQhCQVRDSF9JRB4DR0YwBQxjZW50ZXJlZENlbGwfEBsAAAAAAIBRQAEAAAAfEQsrBAAfEmYfE2gWAmQFCVJlcXVlc3QgIxYCZGVkDwICFgIWAxYSHw4FD1N5c3RlbS5EYXRlVGltZR4ERkdGMAUXezA6TU0vZGQveXl5eSBoaDptbSB0dH0fE2gfDQULQUNUSU9OX1RJTUUfEQsrBAAfEBsAAAAAAEBgQAEAAAAfDwULQUNUSU9OX1RJTUUfEmYfFAUMY2VudGVyZWRDZWxsFgJkBQpEYXRlIEFkZGVkFgJkZWQPAgMWAhYDFgwfDQUJTU9EVUxFX0lEHw8FCU1PRFVMRV9JRB8QGwAAAAAAAGlAAQAAAB8RCysEAR8SZh8TaBYCZAUJTW9kdWxlIElkFgJkZWQPAgQWAhYDFgwfDQUNRE9DVU1FTlRfVFlQRR8PBQ1ET0NVTUVOVF9UWVBFHxAbAAAAAAAAaUABAAAAHxELKwQBHxJmHxNoFgJkBQtBY3Rpb24gVHlwZRYCZGVkDwIFFgIWAxYMHw0FDVNFTlRfVE9fUVVFVUUfDwUNU0VOVF9UT19RVUVVRR8QGwAAAAAAAFRAAQAAAB8RCysEAR8SZh8TaBYCZAULRGVzdGluYXRpb24WAmRlZA8CBhYDFgofDQUOX2ltZ19NT0RVTEVfSUQfEBsAAAAAAAA+QAEAAAAfEQsrBAEfEmYfE2gWAmRlFgJkZQ8CBxYDFgofDQUSX2ltZ19ET0NVTUVOVF9UWVBFHxAbAAAAAAAAPkABAAAAHxELKwQBHxJmHxNoFgJkZRYCZGUPAggWAxYKHw0FEl9pbWdfU0VOVF9UT19RVUVVRR8QGwAAAAAAAD5AAQAAAB8RCysEAR8SZh8TaBYCZGUWAmRlDwIJFgIWAxYMHw0FEUlOU1RSVU1FTlRfTlVNQkVSHw8FEUlOU1RSVU1FTlRfTlVNQkVSHxAbAAAAAAAAWUABAAAAHxELKwQAHxJmHxNoFgJkBQtSZWZlcmVuY2UgIxYCZGVkDwIKFgIWAxYMHw0FD0RPQ19ERVNDUklQVElPTh8PBQ9ET0NfREVTQ1JJUFRJT04fEBsAAAAAAABpQAEAAAAfEQsrBAAfEmYfE2gWAmQFEEl0ZW0gRGVzY3JpcHRpb24WAmRlZA8CCxYCFgMWEB8NBQhOT19QQUdFUx8OBQxTeXN0ZW0uSW50MzIfDwUITk9fUEFHRVMfFAUMY2VudGVyZWRDZWxsHxAbAAAAAAAATkABAAAAHxELKwQAHxJmHxNoFgJkBQcjIFBhZ2VzFgJkZWQPAgwWAhYDFhIfDgUOU3lzdGVtLkRlY2ltYWwfFQUFezA6Y30fE2gfDQUDRkVFHxELKwQBHxAbAAAAAAAATkABAAAAHw8FA0ZFRR8SZh8UBQxjZW50ZXJlZENlbGwWAmQFA0ZlZRYCZGVkDwINFgMWDB8NBQhGRUVWQUxVRR8UBQ5jZW50ZXJlZENvbHVtbh8QGwAAAAAAAE5AAQAAAB8RCysEAB8SZh8TaBYCZAUDRmVlFgJkZQ8CDhYCFgMWDB8NBQtET0NVTUVOVF9JRB8PBQtET0NVTUVOVF9JRB8QGwAAAAAAAFtAAQAAAB8RCysEAR8SZh8TaBYCZAUKRG9jdW1lbnQgIxYCZGVkDwIPFgIWAxYMHw0FCFFVQU5USVRZHw8FCFFVQU5USVRZHxAbAAAAAABAYEABAAAAHxELKwQBHxJmHxNoFgJkBQhRdWFudGl0eRYCZGVkDwIQFgIWAxYMHw0FCUdMT0JBTF9JRB8PBQlHTE9CQUxfSUQfEBsAAAAAAABpQAEAAAAfEQsrBAEfEmYfE2gWAmQFCUdsb2JhbCBJZBYCZGVkDwIRFgIWAxYOHw0FClJFUVVFU1RfSUQfDgUMU3lzdGVtLkludDMyHw8FClJFUVVFU1RfSUQfEBsAAAAAAABUQAEAAAAfEQsrBAEfEmYfE2gWAmQFCVJlcXVlc3QgIxYCZGVkDwISFgIWAxYMHw0FCVJFUVVFU1RPUh8PBQlSRVFVRVNUT1IfEBsAAAAAAABpQAEAAAAfEQsrBAEfEmYfE2gWAmQFCVJlcXVlc3RvchYCZGVkDwITFgIWAxYKHw0FB1JFTUFSS1MfDwUHUkVNQVJLUx8RCysEAR8SZh8TaBYCZAUHUmVtYXJrcxYCZGVkDwIUFgIWAxYKHw0FDkFDVElWRV9SRVFVRVNUHw8FDkFDVElWRV9SRVFVRVNUHxELKwQBHxJmHxNoFgJkBQ5BY3RpdmUgUmVxdWVzdBYCZGVkDwIVFgIWAxYKHw0FD19QcmV2ZW50UmVtb3ZhbB8PBQ9fUHJldmVudFJlbW92YWwfEQsrBAEfEmYfE2gWAmQFDnByZXZlbnRyZW1vdmFsFgJkZWQPAhYWAhYDFgofDQUNX0FjY2Vzc0RlbmllZB8PBQ1fQWNjZXNzRGVuaWVkHxELKwQBHxJmHxNoFgJkBQxhY2Nlc3NkZW5pZWQWAmRlZA8CFxYDFgofDQUGQWN0aW9uHxAbAAAAAAAAWUABAAAAHxELKwQAHxJmHxNoFgJkBQZBY3Rpb24WAmRlDwIYFgMWCB8NBQVOb3Rlcx8RCysEAB8SZh8TaBYCZAUFTm90ZXMWAmRlD2QWBA9mFgIWAhYCHwkUKwADBQpBY3RpdmF0aW9uZGRkZA8CARYCFgJkZA9kFgMPZhYCHgVDU19DSwUOX2ltZ19NT0RVTEVfSUQPAgEWAh8WBRJfaW1nX0RPQ1VNRU5UX1RZUEUPAgIWAh8WBRJfaW1nX1NFTlRfVE9fUVVFVUUPAgIWAhYCHwk8KwAIAgAFCVNlbGVjdGlvbgELKZQBSW5mcmFnaXN0aWNzLldlYi5VSS5HcmlkQ29udHJvbHMuQ2VsbENsaWNrQWN0aW9uLCBJbmZyYWdpc3RpY3M0LldlYi52MTMuMiwgVmVyc2lvbj0xMy4yLjIwMTMyLjIyOTQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49N2RkNWMzMTYzZjJjZDBjYgFkDwIDFgIWAhYCHwkUKwABBQtFZGl0aW5nQ29yZWQPZBYBD2YWAhYCFgIfCRQrAAEFC0NlbGxFZGl0aW5nZA9kFgEPZhYGHxYFDURPQ1VNRU5UX1RZUEUeA0NFMAUcZ3JpZEJhc2tldF9Ecm9wRG93blByb3ZpZGVyMR8JFCsAAWRkD2QWAQ9mFgIfCRQrAAEFHGdyaWRCYXNrZXRfRHJvcERvd25Qcm92aWRlcjFkZGRkFgJmDxYCFgcPFgIfAmVkZBQrAAEUKwACFgQfCTwrADMFAQspmAFJbmZyYWdpc3RpY3MuV2ViLlVJLkxpc3RDb250cm9scy5Ecm9wRG93bkRpc3BsYXlNb2RlLCBJbmZyYWdpc3RpY3M0LldlYi52MTMuMiwgVmVyc2lvbj0xMy4yLjIwMTMyLjIyOTQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49N2RkNWMzMTYzZjJjZDBjYgICAsgBFwUDdHh0J2gqaB8FBUFbeycwJzpbW251bGwsbnVsbCxudWxsLG51bGwsbnVsbCwidHh0IiwidmFsIiwwLG51bGwsbnVsbCxudWxsXV19XWRkZBcAFgAPZBYBD2YUKwACFgIfCRQrAAtkZGRkZAUDdHh0BQN2YWxoZGRkZGQYBAUaY3RsMDAkSGVhZGVyMSRXZWJEYXRhTWVudTEPBQEwZAUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgwFFGN0bDAwJEhlYWRlcjEkV2ViSERTBRpjdGwwMCRIZWFkZXIxJFdlYkRhdGFNZW51MQUVY3RsMDAkZGxnT3B0aW9uV2luZG93BRZjdGwwMCRSYW5nZUNvbnRleHRNZW51BR1jdGwwMCRMb2dpbkZvcm0xJHR4dExvZ29uTmFtZQUcY3RsMDAkTG9naW5Gb3JtMSR0eHRQYXNzd29yZAUaY3RsMDAkTG9naW5Gb3JtMSRyZG9QdWJDcHUFGmN0bDAwJExvZ2luRm9ybTEkcmRvUHZ0Q3B1BRpjdGwwMCRMb2dpbkZvcm0xJHJkb1B2dENwdQUZY3RsMDAkTG9naW5Gb3JtMSRidG5Mb2dvbgUSY3RsMDAkX2lnX2RlZl9lcF9uBRJjdGwwMCRfaWdfZGVmX2VwX2QFKWN0bDAwJExvZ2luRm9ybTEkQmFza2V0MSRncmlkQmFza2V0JGN0bDAwDxQrAAQFA3R4dGYC/////w8C/////w9kBRZjdGwwMCRSYW5nZUNvbnRleHRNZW51D2Vk7Sh2siQU6qIutkCI+z/cnbTv/VL8a+XWorNrxWwXR5A=" style="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=_qM0RJ_GjmpQoCi2nf4Hh4m_MRaHfhthngETy9Rh1UoZfc0r9IY7sSDmV6oqQKwdJ60A5b_15TPGR6Mo1R-9GE_SUScB6VSIaeN0oQvatAk1&amp;t=638460058960000000" type="text/javascript"></script>
+
+<script type="text/javascript" src="/ClientScript/Entry.js"></script><script>var _today = '11/4/2026'; var _yesterday = '11/3/2026'; 
+	    var _startwk1 = '11/1/2026'; var _startwk2 = '10/25/2026'; var _endwk2 = '10/31/2026';
+	    var _startmth1 = '11/1/2026'; var _startmth2 = '10/1/2026'; var _endmth2 = '10/31/2026';</script>
+<link href="ig_res/Default/ig_shared.css" type="text/css" rel="stylesheet">
+<link href="ig_res/ElectricBlue/ig_shared.css" type="text/css" rel="stylesheet">
+<link href="ig_res/ElectricBlue/ig_datamenu.css" type="text/css" rel="stylesheet">
+<link href="ig_res/ElectricBlue/ig_dialogwindow.css" type="text/css" rel="stylesheet">
+<link href="ig_res/Default/ig_datamenu.css" type="text/css" rel="stylesheet">
+<link href="ig_res/Default/ig_texteditor.css" type="text/css" rel="stylesheet">
+<script src="/ScriptResource.axd?d=MemrMirL-tRqylZkQ5MzMUDyV5BowHtkF6fqEheblmbbB0aOk0aXa7ixSuNGfECn8KKraer6n6GWf94e7Px4yt8hzVRf8ml1K5M2oFNuGZr4X_ZPSGf_8xXOfNlbix1mZCoX_I8LRJjV4PHvo8RMP8OwELEssI9cSasuPMOwYVY1&amp;t=15e8b38c" type="text/javascript"></script><script type="text/javascript">
+//<![CDATA[
+var ig_pi_imageUrl='/WebResource.axd?d=-zEw3CHzcKhrlh1VhVM8JnpumVbVxmIvzldhlRtreobNkVnk9-sHpf8hU8ix9Ej4nFgwOf-aD7cWotEYogKUFWfimirOzVd0VcjGPwPQ42Y0BuQdFG95QyOGvsyptbvjZT4Dn12ZI6y6rGMTdzE29It9bwxZJiG9Zf9Bq4bVh7WcgJLUD076oFpx1DICxURqMZfx0PIHCFFHnlKo_MlbQg2&t=639111657280000000';try{(new Image()).src=ig_pi_imageUrl;}catch(ex){}
+//]]>
+</script>
+<script src="/ScriptResource.axd?d=iW8Rcb4PzS2nLUpZRqba0fiDdAGcujWWZlPC5mln9c-yzXiRdzCdqO1Y3MeDmZZQKe89dZJbT1wRqs6A4DnLYW0bn6KBvU98Htj4maB-hYGBzLQfzEPf5QAmq_LB5JOes9i2QSbO-ozoK75FytthQzIeaPj8PFkOgXANDF72MPXLd1BYBD2xxfqd_zV9xB2Z0&amp;t=2b1c13a8" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=t58X9yuh0_AEIg9DDqDIp6XwB_BwC2vXvyCdQ_729dnTtamt-DSCxgQNwGWkQNZnkJ8r6lFnh4wUa2BeeL9gYn3x7A-l1U6Ii31AifGHuzFXSWNihmQ0reP_o7hxly5IynUA2WJF6ppYeUVDc0Zvhy-UkrCEIMdrBhFTtb5UfpD4CsQZReAQtNGTRZ9m4ovz0&amp;t=2b1c13a8" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=vd-NSvwC3k0pITpgV43n2e_U2jR0S80D572s2fpUjrNLwO-91WFY40hGKLsu58SRpA3d-iJIjLbQkp9pKEaJaxm58fbN7zOpiVGIKBcieO_MYVQskeOeGveebNYGuk6EA63IU1ihonjbtEduUWjT1f2uExB_3_tFc7CvHpMG-Is1&amp;t=74258c30" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=lxQQ_PElnWiUwnbjLOG2me4vug_wcEiM9CCxvxX8h5S3aJW8LmCal2FALEnXWTsKG3LBCv1QaA0askNdRkeHkZKTKaB_OMevuzdZwKDsmhowjwP1RIoSZNb5L6wSXrl264gEW5LW5hUdQ3bwpKdTCOddN1HjkiN8ONexRD2zdLIrgt9xe3rHmQYZIO687eHa0&amp;t=74258c30" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Af7losNi0JsjBRHq7GehW95KIM5AHbzu3odzEhcgsG4AUtAshtgYwobFpZCYqQXiigQkVREZ9o-aFsj4VmlW04w5fBIz3zYwCx5Y_Y_-BQKlPEM5MlLU0nHVPr-Ct8yZz4e6eC6V1bMXlKnd-c4lxjs4hxa8ZCVoDzPpuoczRrw1&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=7TvP9mUFztq0P62BovFAdAR_7IEK-u4DqMyQQcTmIAzGMvCrr3q6FgvtYPzHHghPSTty2Xubu_fbVSylh48DKqNY5CoPZXsa5VMdTUDqDFjrtaBCDLeiKYzwvvt_RMgTW03Buv2JZ0b9_EjlEHmqqlI7kAmiAmAulM6cz1EHhkHWkZ096h_p5AFiRRHxTz-O0&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=S4V3Vj4Nxh2ou4lHbRoVl6Rkbg_0SleVvnY5GBWIv3a4cqF8wmtYFB-nqPkKsXEwzy7TkNjaEUdSJb98I2ia3xr-jwI3xPCXuikGSiufHZAcbASFBLUkjsBFNEYWyu9dfh0xLvujRRm4C7gDdPjIHZr_qJkgsLkw6FXlMP6JTZiIzddEuWqkurP9XfZY97X5N5nF9duxAfcbSMsWtV-U2A2&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=_HOJXlTztWebnm7f0lFHL9jp_x4BbdABZaza4rPm5Hd74eTfYG3IUmNKKIDkM9PwxoKtLftucgwSbGffQHN1b6weXI1RiHQAgwuySKHCesa6jPalNtdmFCgIp8xxVUQdLpnEyYVZK0ONWGIw8227pwm5IpmiDh2qVHNgE1xemq4Ad-EwDOrx3d9DBo5XA3ho9OJgFSZMUGlFGhUJA_ot5g2&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=ZRY4zuX7bbQvtNFufZaja9GYqEZGImBxkk81Hc_gAVMzsxJHoyR6JOc_w1lcp-RCKJjDOcUb5X1KSjFDhX1xrCQGBWJYVnvqLTEhV0I2a33g_7C0ioh0uJ00uoaAu6kTPaS6BCYKrejaftBGP0iBuaD1viDg1f94GUpLUTsN56aN4OuTlDXAvSuiAbhdwSn70&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=_S6579EhMQU_ScX35rQUyQBJ1le7rgXcrBdrHmP90FqcRpBhFROmy-lb5iZRVJ_gYg2gTF0o5pQ707QyuzO_0CnxuU7z9WC_1CZuy2VXaqo7f1H11tjVy0wc0oWbdpIYD1PqdJsx02VdSDdZ5i5zha2l9e1dSoOwzXz2x0wHkKg7au0UMmiBOMfDhh87WNQM0&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=TneMx7V1zC0111qlti-3wDM2rQ-QCDhHXyR3UOh3bbOhFf4OgPcrRE75Xj6JDaNtadz6rOWFkzaebFeHUx5XCFmgCovFulo6uQnFOHS9brNbSJeGKaphfVMfTh4dnyAnJUxulbmfNxlBssKY494acahK3P3C666XCc-5wVvhAREpPEj6bkMuJN6Xz1RCuEMDOw49ELS4X0L-iNU6YasTjg2&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=FvL4nKmbVa9XPcQdtW_-1hNCYoS9FAvpPRhc4GJwnLdXAXAJN-2oMp5keM6IAC1H9SMQQrrgqDxdo6byuD1I90haIlRoOIeaZWKnINmo2fd9AoPt8_lZ8EltDTnC1vX_RRPngS2V2Sp_UCfYCoq_fuCqwQZW1rAduMHfitIMKxKvibf4uAI4_MD_zSS5zlBwvpWw9wunZry0Lu1L5hIlRA2&amp;t=ffffffffcb0b3192" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (document.head || (document.getElementsByTagName && document.getElementsByTagName('head') && document.getElementsByTagName('head').length > 0)) { 
+var docHead = (document.head ? document.head : document.getElementsByTagName('head')[0]); 
+var style = document.createElement('style'); 
+style.id ="igStyles";
+style.type = 'text/css';
+var __ig_css = "";
+if (style.styleSheet) { style.styleSheet.cssText =__ig_css;}
+else { style.appendChild(document.createTextNode(__ig_css));}
+docHead.appendChild(style);
+} 
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" style="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAR0UTOBqjv2VYb6i0gN53kW6WnOq68b9gVYStwu7QHXD9Ffi+id4jhU7EyU5s/DNRSI5mSWnRnNi145bDfaLiCEwELZy1mXJXhuHD0ZecDyuuqKgKAWxDpvVRY+fU7gd9Q=" style="">
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$WebScriptManager1', 'form1', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+        <div style="width:1022px;margin: 0px 0px 0px;" class="PAcontent">
+            
+
+
+<div style="width:100%;">
+
+<div style="font-size:10pt;width:100%;position:relative; top:-2px; ">
+    <!-- user login/basket -->
+    <div style="float:left;margin-left:20px;padding-top:1px; ">
+    
+    <div id="Header1_pnlWelcomeVisitor">
+	
+    Welcome Visitor. 
+    
+</div>
+    </div>
+    <div id="topRightBar" style="float:right;margin-right:10px; width:75%; text-align:right; padding-bottom:3px; ">
+        <table style="float:right;text-align:left;" border="0" cellpadding="0" cellspacing="0" role="presentation"><tbody><tr>
+        <td style="max-width:800px; width:auto; text-align:center;">
+            <div style="padding-right:10px; ">
+            
+            
+            </div>
+        </td>
+        <td>
+            <div id="Header1_pnlLogin">
+	
+                <span id="Header1_lnkLogin" class="staticLink"><a href="javascript:displayLoginWindow();" class="staticLink" tabindex="10">Login</a></span>
+                
+                &nbsp;|&nbsp;&nbsp;
+            
+</div>
+        </td>
+        <td id="clearunderline">
+            <a id="Header1_lnkBasket" tabindex="10" href="users/basket.aspx"><span style=" position:relative; top:3px;"><img title="shopping cart" border="0" src="images/icons/cart.gif" style="height:16px;width:16px;"></span> <span class="staticLink" style="position:relative; top:-1px;">View Basket<span id="_numBasketItems"></span></span></a>
+        </td></tr></tbody></table>
+    </div>
+
+</div>
+
+<input type="hidden" id="Header1_WebHDS_clientState" name="Header1_WebHDS_clientState" style="">
+<input type="hidden" id="Header1_WebDataMenu1_clientState" name="Header1_WebDataMenu1_clientState" style=""><div class="ig_ElectricBlueControl igdm_ElectricBlueControlHorizontal" id="Header1_WebDataMenu1" tabindex="20" style="border-color: black; border-width: 1px; border-style: solid; width: 1022px; display: inline-block;"><input type="button" tabindex="20" value="" title="not user accessible" style="position: absolute; background: transparent; border: 0px; padding: 0px; outline: none; height: 1px; width: 1px; z-index: -1; display: none; margin-top: 17px; margin-left: 512px;">
+	<ul class="igdm_ElectricBlueMenuGroupHorizontalRoot " style="width: 588px;">
+		<li title="Welcome" data-ig="x:273746300.0:adr:0" class="igdm_ElectricBlueMenuItemHorizontalRoot igdm_ElectricBlueMenuItemHorizontalRootSelected mainMenuItem currentToolbarItem igdm_ElectricBlueMenuItemHorizontalRootActive" unselectable="on" style="float: left; height: 18px;" adr="0"><a accesskey="" href="/" tabindex="-1" class="igdm_ElectricBlueMenuItemHorizontalRootLink " onclick="{return false;}"><span title="Welcome" tabindex="-1" unselectable="on">Welcome</span></a></li><li class="igdm_ElectricBlueMenuItemHorizontalSeparator " data-ig="x:273746300.1:adr:1:mkr:sep" style="position: relative; float: left; width: 1px; height: 32px;" mkr="sep" adr="1"></li><li title="Marriage" data-ig="x:273746300.2:adr:2" class="igdm_ElectricBlueMenuItemHorizontalRoot igdm_ElectricBlueMenuItemHorizontalParent mainMenuItem" unselectable="on" style="float: left; height: 18px;" adr="2"><a href="#" tabindex="-1" class="igdm_ElectricBlueMenuItemHorizontalRootLink " onclick="{return false;}"><span title="Marriage" tabindex="-1" unselectable="on">Marriage</span></a><ul class="igdm_ElectricBlueMenuGroupVertical " style="display:none;visibility:hidden;position:absolute;">
+			<li title="Online Marriage App" data-ig="x:273746300.3:adr:2.0" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="2.0"><a href="/Marriage/MarriageApplication.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Online Marriage App" tabindex="-1" unselectable="on">Online Marriage App</span></a></li><li title="Search Marriage Index" data-ig="x:273746300.4:adr:2.1" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="2.1"><a href="/Marriage/SearchEntry.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Search Marriage Index" tabindex="-1" unselectable="on">Search Marriage Index</span></a></li>
+		</ul></li><li class="igdm_ElectricBlueMenuItemHorizontalSeparator " data-ig="x:273746300.5:adr:3:mkr:sep" style="position: relative; float: left; width: 1px; height: 32px;" mkr="sep" adr="3"></li><li title="Official Public Records" data-ig="x:273746300.6:adr:4" class="igdm_ElectricBlueMenuItemHorizontalRoot igdm_ElectricBlueMenuItemHorizontalParent mainMenuItem" unselectable="on" style="float: left; height: 18px;" adr="4"><a href="#" tabindex="-1" class="igdm_ElectricBlueMenuItemHorizontalRootLink " onclick="{return false;}"><span title="Official Public Records" tabindex="-1" unselectable="on">Official Public Records</span></a><ul class="igdm_ElectricBlueMenuGroupVertical " style="display:none;visibility:hidden;position:absolute;">
+			<li title="Grantee List" data-ig="x:273746300.7:adr:4.0" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="4.0"><a href="/RealEstate/ListOfGrantees.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Grantee List" tabindex="-1" unselectable="on">Grantee List</span></a></li><li title="Grantor List" data-ig="x:273746300.8:adr:4.1" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="4.1"><a href="/RealEstate/ListOfGrantors.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Grantor List" tabindex="-1" unselectable="on">Grantor List</span></a></li><li title="Search Real Estate Index" data-ig="x:273746300.9:adr:4.2" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="4.2"><a href="/RealEstate/SearchEntry.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Search Real Estate Index" tabindex="-1" unselectable="on">Search Real Estate Index</span></a></li><li title="Subdivision List" data-ig="x:273746300.10:adr:4.3" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="4.3"><a href="/RealEstate/ListOfSubdivisions.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Subdivision List" tabindex="-1" unselectable="on">Subdivision List</span></a></li>
+		</ul></li><li class="igdm_ElectricBlueMenuItemHorizontalSeparator " data-ig="x:273746300.11:adr:5:mkr:sep" style="position: relative; float: left; width: 1px; height: 32px;" mkr="sep" adr="5"></li><li title="Uniform Commercial Code" data-ig="x:273746300.12:adr:6" class="igdm_ElectricBlueMenuItemHorizontalRoot igdm_ElectricBlueMenuItemHorizontalParent mainMenuItem" unselectable="on" style="float: left; height: 18px;" adr="6"><a href="#" tabindex="-1" class="igdm_ElectricBlueMenuItemHorizontalRootLink " onclick="{return false;}"><span title="Uniform Commercial Code" tabindex="-1" unselectable="on">Uniform Commercial Code</span></a><ul class="igdm_ElectricBlueMenuGroupVertical " style="display:none;visibility:hidden;position:absolute;">
+			<li title="Search UCC Index" data-ig="x:273746300.13:adr:6.0" class="igdm_ElectricBlueMenuItemVertical mainMenuItem" unselectable="on" adr="6.0"><a href="/UCC/SearchEntry.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemVerticalLink " onclick="{return false;}"><span title="Search UCC Index" tabindex="-1" unselectable="on">Search UCC Index</span></a></li>
+		</ul></li><li class="igdm_ElectricBlueMenuItemHorizontalSeparator " data-ig="x:273746300.14:adr:7:mkr:sep" style="position: relative; float: left; width: 1px; height: 32px;" mkr="sep" adr="7"></li><li title="FAQ" data-ig="x:273746300.15:adr:8" class="igdm_ElectricBlueMenuItemHorizontalRoot mainMenuItem" unselectable="on" style="float: left; height: 18px;" adr="8"><a href="/localization/faq.aspx" tabindex="-1" class="igdm_ElectricBlueMenuItemHorizontalRootLink " onclick="{return false;}"><span title="FAQ" tabindex="-1" unselectable="on">FAQ</span></a></li>
+	</ul>
+</div>
+
+<div class="messageBar">
+<span style="margin:2px;"><span id="Header1_menuMsg"></span>
+</span>
+</div>
+</div>
+
+
+
+
+
+
+
+            <a name="maincontent" id="A1"></a>
+            <div class="mainContent">
+	        
+    <div id="cph1_pnlWelcomeMessage" class="welcomeMessage">
+
+</div>
+	
+    <div id="cph1_pnlSecondaryMessage" class="secondaryMesssage">
+
+</div>
+
+    
+<!--    <div class="homePageLinkButton">
+    <a href="localization/browsertest.aspx">Click here to test your browser for site requirements.</a>
+    </div>-->
+
+    <div id="cph1_pnlCustom" tabindex="40" class="disclamerBox" role="region" aria-label="Disclaimer terms and conditions">
+	<h1 align="CENTER">Welcome!!!</h1>
+<p>
+  <font size="4">Please click any of the above </font>
+  <font color="#dd0000" size="4">
+    <font color="#dd0000" size="4">Tabs </font>
+  </font>
+  <font size="4">to conduct a search for the following information:</font>
+</p>
+<p>
+  <font size="4">
+    <i>
+      <u>
+        <font color="#c00000" size="5">
+          <font color="#c00000" size="5">Marriage</font>
+        </font>
+      </u>
+    </i>
+  </font>
+</p>
+<p>
+  <font size="3">
+    <b>
+      - Select the <font color="#4472c4">"Marriage" </font>
+      <font color="#000000">box at the top. </font>
+    </b>
+  </font>
+</p>
+<p>
+  <b>
+    <font size="3">- Click <font color="#4472c4">Online Marriage App </font>if you wish to complete your Marriage Application On-Line.</font>
+  </b>
+</p>
+<p>
+  <b>
+    <font size="3"> - Click <font color="#4472c4">Search Marriage Index </font>to search all Marriage Licenses and Applications, dating back to the beginning of Jackson County in 1826. You can view and print copies free of charge.</font>
+  </b>
+</p>
+<p>
+  <b>
+    <font size="3">Searches can be conducted numerous ways including by Name; License Number; Application Date, or Date of Marriage or any combination of the above.</font>
+  </b>
+</p>
+<p>
+  <i>
+    <font size="3"></font>
+  </i>
+</p>
+<p>
+  <i>
+    <font color="#538135">
+      <font size="3"><u>Suggestion</u>: It is recommended to only search by Name or License Number to provide the best search result.</font>
+    </font>
+  </i>
+</p>
+<p>
+  <font size="3"></font>
+</p>
+<font color="#4472c4"><span lang=""></span></font>
+<p>
+  <b>
+    <font size="3">
+      <font color="#4472c4">Certified Copies of Marriage Licenses </font>can be obtained in person at our Office(s), online through this portal, or ordered by mail.
+    </font>
+  </b>
+</p>
+<p>
+  <font color="#4472c4" size="3"><b></b></font>
+</p>
+<p>
+  <font color="#4472c4" size="3"><b>If requesting a certified copy in person: </b></font>
+</p>
+<p>
+  <b>
+    <font size="3"></font>
+  </b>
+</p>
+<blockquote style="margin-right: 0px;">
+  <p style="margin-right: 0px;">
+    <b>
+      <font size="3"> Please have the following information:</font>
+    </b>
+  </p>
+  <p style="margin-right: 0px;">
+    <span lang="EN">
+      <b>
+        <font size="3"></font>
+      </b>
+    </span>
+  </p>
+</blockquote>
+<blockquote style="margin-right: 0px;">
+  <blockquote style="margin-right: 0px;">
+    <p style="margin-right: 0px;">
+      <b>
+        <font size="3">1. Names of both parties used when they applied for the license.</font>
+      </b>
+    </p>
+    <p style="margin-right: 0px;">
+      <b>
+        <font size="3"> 2. The approximate date and/or year of the marriage.</font>
+      </b>
+    </p>
+    <p style="margin-right: 0px;">
+      <b>
+        <font size="3"> 3. The Marriage License number, if known.</font>
+      </b>
+    </p>
+    <p style="margin-right: 0px;">
+      <span lang="">
+        <b>
+          <font size="3"> 4. $10.00 fee.</font>
+        </b>
+      </span>
+    </p>
+  </blockquote>
+</blockquote>
+<p>
+  <font color="#4472c4" size="3"><b></b></font>
+</p>
+<font color="#4472c4">
+  <p>
+    <b>
+      <font size="3">If requesting a certified copy by mail: (We do not mail outside of the United States)</font>
+    </b>
+  </p>
+  <font color="#000000">
+    <blockquote style="margin-right: 0px;">
+      <p>
+        <b>
+          <font size="3">Please include the following with your request:</font>
+        </b>
+      </p>
+      <p>
+        <b>
+          <font size="3"></font>
+        </b>
+      </p>
+    </blockquote>
+    <blockquote style="margin-right: 0px;">
+      <blockquote style="margin-right: 0px;">
+        <b>
+          <font size="3"></font>
+        </b>
+      </blockquote>
+    </blockquote>
+    <blockquote style="margin-right: 0px;">
+      <blockquote style="margin-right: 0px;">
+        <p>
+          <b>
+            <font size="3">1. Names of both parties used when they applied for the license.</font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3"></font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3">2. The approximate date and/or year of the marriage.</font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3"></font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3">3. The Marriage License number, if known.</font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3"></font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3">4. A contact telephone number in case we need to contact you.</font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3"></font>
+          </b>
+        </p>
+        <p>
+          <b>
+            <font size="3">5. A $10.00 check made payable to the "Recorder of Deeds Department."</font>
+          </b>
+        </p>
+      </blockquote>
+    </blockquote>
+    <dir>
+      <dir>
+        <font color="#333333" size="3">
+          <p><b>Please forward your request and check to the following address: Historic Truman Courthouse, Recorder of Deeds Department; 112 W. Lexington; Suite 30; Independence, Missouri 64050. For additional help call 816-881-4483.</b></p>
+        </font>
+      </dir>
+      <font color="#333333"></font>
+    </dir>
+    <p>
+      <font color="#333333" size="3"><b></b></font>
+    </p>
+    <p>
+      <b>
+        <font size="3"></font>
+      </b>
+    </p>
+  </font>
+  <p>
+    <b>
+      <font size="3"></font>
+    </b>
+  </p>
+</font>
+
+<p style="margin-right: 0px;">
+  <span lang="EN">
+    <font color="#333333">
+      <font color="#333333">
+        <font color="#333333">
+          <font color="#4472c4" size="3"><b>If requesting a certified copy online, please follow these directions: </b></font>
+        </font>
+      </font>
+    </font>
+  </span>
+</p>
+<dir>
+  <font color="#4472c4" size="3"><b> </b></font>
+  <ol type="1"></ol>
+</dir>
+<ol>
+  <li>
+    <div style="margin-right: 0px;">
+      <font size="3">
+        <b>Select <font color="#000000">the "Marriage" </font></b>
+        <font color="#000000">
+          <b>
+            <font color="#000000">box</font> at the top.
+          </b>
+        </font>
+        <font color="#000000"><br><br></font>
+      </font>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Click Search Marriage Index to search all Marriage Licenses and Applications<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Searches can be conducted numerous ways including by Name; License Number; Application Date, or Date of Marriage or any combination of the above.<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Check mark the license(s) you are needing the certified copy of<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">At the top select "</font>
+      </b><i>
+        <b>
+          <font size="3">buy a copy certified image"<br><br></font>
+        </b>
+      </i>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Fill out the delivery information and select add to basket<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Go to your basket and select check out and you will be taken to a the PayIt website to pay<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">You can create an account or check out as a guest <br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Add a payment method then check out <br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Once the payment is complete you will select the link to return you to our page and you will get a confirmation at that time<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <font size="3"><b>We will then process the order and mail out the certified copies to the address you provide</b> <br></font><br><br>
+    </div>
+  </li>
+</ol>
+
+<p style="margin-right: 0px;">
+  <span lang="EN">
+    <font color="#333333">
+      <font color="#333333">
+        <font color="#333333">
+          <font color="#4472c4" size="3"><b>If requesting an uncertified copy online, please follow these directions: </b></font>
+        </font>
+      </font>
+    </font>
+  </span>
+</p>
+<dir>
+  <font color="#4472c4" size="3"><b> </b></font>
+  <ol type="1"></ol>
+</dir>
+<ol>
+  <li>
+    <div style="margin-right: 0px;">
+      <font size="3">
+        <b>Select <font color="#000000">the "Marriage" </font></b>
+        <font color="#000000">
+          <b>
+            <font color="#000000">box</font> at the top.
+          </b>
+        </font>
+        <font color="#000000"><br><br></font>
+      </font>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Click Search Marriage Index to search all Marriage Licenses and Applications<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Searches can be conducted numerous ways including by Name; License Number; Application Date, or Date of Marriage or any combination of the above.<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Click view to the left of the document number.<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">The image will open showing all the pages. </font>
+      </b><br><br>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">Select get image now to the right of the image.<br><br></font>
+      </b>
+    </div>
+  </li>
+  <li>
+    <div style="margin-right: 0px;">
+      <b>
+        <font size="3">A new window will open that will allow you to print the image(s).<br><br></font>
+      </b>
+    </div>
+  </li>
+</ol>
+
+<p>
+  <font size="3"></font>
+  <i>
+    <u>
+      <font color="#c00000" face="Trebuchet MS" size="5">
+        <font color="#c00000" face="Trebuchet MS" size="5">
+          <font color="#c00000" face="Trebuchet MS" size="5"><b>Official Public Records </b></font>
+        </font>
+      </font>
+    </u>
+  </i>
+</p>
+<p>
+  <font size="3"></font>
+</p>
+<p>
+  <b>
+    <font size="3">- By clicking either Grantee List, Grantor List, Search Real Estate Index or Subdivision List, </font>
+    <font size="3">you will find online indexes and images of documents dating back to approximately 1961 and from 1826 to the 1870s. All other documents are on microfilm at our offices.</font>
+    <font size="3"> </font>
+  </b><u>
+    <font color="#558336"><br></font>
+  </u>
+  <font color="#558336"></font>
+</p>
+<p>
+  <font color="#558336">
+    <font size="3"><u>Suggestion</u>: When selecting Search Real Estate Index, not all fields need to be completed.</font>
+  </font>
+</p>
+<p>
+  <font color="#558336" size="3"><i>Example: You can conduct a "general" search by entering a Name or a more "specific" search by entering the name of a Grantor and/or Grantee. If unsuccessful, other fields can be queried. For best results when searching the Subdivision List, please click on the "ABC" emblem located beside the Subdivision box in order to correctly select and search our Subdivision List. Click either "Search Immediately" and select a specific Subdivision or click "Enter More Criteria", and select a specific Subdivision and enter a Lot # and/or a Block #.</i></font>
+</p>
+<p>
+  <font color="#558336">
+    <i>
+      <font color="#ff0000" size="3"></font>
+    </i>
+  </font>
+</p>
+<p>
+  <b>
+    <b>
+      <font color="#558336">
+        <i>
+          <font color="#ff0000">
+            <font color="#4472c4" size="3">To order a certified copy of a Recorded Deed: (We do not mail outside of the United States)</font>
+          </font>
+        </i>
+      </font>
+    </b>
+  </b>
+</p>
+<p>
+  <font size="3"></font>
+</p>
+<p>
+  <font size="3"></font>
+</p>
+<p>
+  <font size="3"></font>
+</p>
+<ol>
+  <li>
+    <b>
+      <font size="3">Once you complete the above "Official Public Records" search instructions to find your document(s) you need certified copies of.<br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Once you found your deed, select the view icon to verify you have the correct document. <br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Select the "X" at the top of the view page to go back to your search results.<br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">After confirming you have found the right document, put a check mark in the square box next to the view icon that you have verified is the correct image you are needing certified. <br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Select the "<i>buy a copy certified image" </i>link</font><i>
+        <font size="3">. <br><br></font>
+      </i>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Fill out the delivery information and select add to basket<br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Go to your basket and select check out and you will be taken to a the PayIt website to pay<br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">You can create an account or check out as a guest<br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Add a payment method then check out <br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">Once the payment is complete you will select the link to return you to our page and you will get a confirmation at that time<br><br></font>
+    </b>
+  </li>
+  <li>
+    <b>
+      <font size="3">We will then process the order and mail out the certified copies to the address you provided</font>
+    </b>
+  </li>
+</ol>
+<b>
+  <i>
+    <u>
+      <font color="#c00000" size="5">
+        <font color="#c00000" size="5">
+          <p>UCC - Uniform Commercial Code <br></p>
+        </font>
+      </font>
+    </u>
+  </i>
+</b><i></i>
+<p>
+  <font size="3">
+    <b>- UCC document indexing, relating to commercial transactions, chattel mortgages and other </b><b>
+      recordings are available for viewing and/or printing between the years of 1972 and 1996.<b>
+        <u>
+          <font color="#c00000" size="5">
+            <font color="#c00000" size="5"></font>
+          </font>
+        </u>
+      </b>
+    </b>
+  </font>
+</p>
+<p>
+  <b>
+    <b>
+      <u>
+        <font color="#c00000" size="5">
+          <font color="#c00000" size="5">FAQ - Frequently Asked Questions <br></font>
+        </font>
+      </u>
+    </b>
+  </b>
+</p>
+<p>
+  <b>
+    <b>
+      <font size="3">- Additional explanations are available to commonly asked questions.</font>
+    </b>
+  </b>
+</p>
+<p>
+  <b>
+    <b>
+      <font face="Trebuchet MS" size="1">
+        <font face="Trebuchet MS" size="1"></font>
+      </font>
+    </b>
+  </b>
+</p>
+<p>
+  <b>
+    <u>
+      <font color="#c00000"></font>
+    </u>
+    <font color="#c00000"></font>
+    <font size="3">
+      <font color="#c00000"><u>Important Disclaimer</u>: </font>The Recorder of Deeds makes no warranty or guarantee concerning the accuracy or reliability of the content at this site or other sites to which we link. Accessing the accuracy and reliability of information is the responsibility of the user. The Recorder of Deeds shall not be liable for errors contained herein or for any damages in connection with the use of the information contained herein.
+    </font>
+  </b>
+</p>
+<p><b><br></b></p>
+<p></p>
+
+</div>
+
+
+            </div>
+            <div class="mainContentNoMargin">
+	        
+            
+            </div>
+
+            <div class="footer">
+                
+<table id="tblFooter" width="100%" border="0" role="presentation">
+	<tbody>
+		<tr>
+			<td align="center" style="font-weight:normal; font-size:8pt; color:black; font-family:Arial">
+				<div id="Footer1_pnlFooterMessage">
+
+</div>Aumentum Recorder - Public 
+				Access Web UI,
+				<span id="Footer1_version" title="2023.1.2.34 Built 04/07/2026 01:39:16 PM">Version 2023.1.2</span>
+				<br>
+				Copyright © 2001 -
+				<span id="Footer1_thisYear">2026</span>
+				&nbsp;<a tabindex="-1" class="HartLink" href="https://www.harrisrecordingsolutions.com/products/aumentum-recorder/" target="_blank">Harris Recording Solutions.</a> All Rights Reserved
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+            </div>
+
+			<input type="hidden" id="dlgOptionWindow_clientState" name="dlgOptionWindow_clientState" style=""><div class="ig_ElectricBlueControl igdw_ElectricBlueControl" id="dlgOptionWindow" style="height:550px;width:700px;visibility:hidden;overflow:hidden;position:absolute;display:none;" ctlmain="layout">
+	<div data-ig="x:797756677.0:obj:header" class="ig_ElectricBlueHeader igdw_ElectricBlueHeaderArea" style="overflow:hidden;" obj="header">
+		<table cellpadding="0" cellspacing="0" style="width:100%;height:100%;table-layout:fixed;" role="none">
+			<tbody><tr>
+				<td data-ig="x:797756677.1:mkr:8" class="igdw_ElectricBlueHeaderCornerLeft" mkr="8">&nbsp;</td><td data-ig="x:797756677.2:mkr:7" class="igdw_ElectricBlueHeaderContent" style="white-space:nowrap;overflow:hidden;" mkr="7"><span data-ig="x:797756677.3:mkr:1" class="igdw_ElectricBlueHeaderCaption" mkr="1">Copy Options</span></td><td class="igdw_ElectricBlueHeaderContent igdw_ElectricBlueHeaderButtonArea" style="width:15px;text-align:right;white-space:nowrap;"><img alt="Close" data-ig="x:797756677.4:mkr:Close" src="ig_res/ElectricBlue/images/igdw_Close.gif" mkr="Close"></td><td data-ig="x:797756677.5:mkr:9" class="igdw_ElectricBlueHeaderCornerRight" mkr="9">&nbsp;</td>
+			</tr>
+		</tbody></table>
+	</div><div data-ig="x:797756677.6:obj:body" obj="body">
+		<table cellpadding="0" cellspacing="0" style="width:100%;table-layout:fixed;" role="presentation">
+			<tbody><tr>
+				<td data-ig="x:797756677.7:mkr:10" class="igdw_ElectricBlueBodyEdgeLeft" mkr="10">&nbsp;</td><td data-ig="x:797756677.8:mkr:11" class="igdw_ElectricBlueBodyContentArea" mkr="11"><div class="igdw_ElectricBlueBodyContent" data-ig="x:797756677.9:mkr:16" style="overflow:Auto;background-color:AliceBlue;width:100%;height:100%;" mkr="16">
+					
+						<iframe id="ifrOptionWindow" src="javascript:'&lt;html lang=&quot;en&quot; /&gt;'" allowtransparency="true" style="height:99%; width:685px;" frameborder="0" title="Copy Options"></iframe>
+					
+				</div></td><td data-ig="x:797756677.10:mkr:12" class="igdw_ElectricBlueBodyEdgeRight" mkr="12">&nbsp;</td>
+			</tr><tr>
+				<td data-ig="x:797756677.11:mkr:13" class="igdw_ElectricBlueBodyCornerBottomLeft" mkr="13">&nbsp;</td><td data-ig="x:797756677.12:mkr:14" class="igdw_ElectricBlueBodyEdgeBottom" mkr="14">&nbsp;</td><td data-ig="x:797756677.13:mkr:15" class="igdw_ElectricBlueBodyCornerBottomRight" mkr="15">&nbsp;</td>
+			</tr>
+		</tbody></table>
+	</div>
+</div>
+        </div>                
+        <input type="hidden" id="RangeContextMenu_clientState" name="RangeContextMenu_clientState" style="">
+
+
+        <div id="loginWindow" class="modalDialogLight">
+            <div>
+                <h2>Login</h2>
+                
+
+<div id="loginPane" class="loginPaneNew" style="padding:4px; width: 100%; " onkeypress="setLogin(event)" role="dialog" aria-label="Login Dialog">
+    <span onclick="closeLoginWindow();" title="Close" role="button" aria-label="close button" style="color:#666666; text-decoration:none; font-weight: bold; cursor: pointer; position:absolute; top: 2px; right:6px; font-size:10pt;">X</span>
+    <script type="text/javascript">
+        function setLoginFocus() {
+            var obj = $find('LoginForm1_txtLogonName');
+            //alert(obj);
+            if (obj != null) obj.focus(100);
+        }
+        function setLogin(e) {
+            var input = ig_getWebControlById('LoginForm1_btnLogon');
+              if (e.keyCode == 13 && input != null ) {
+                  input.setFocus();
+                  input.click();
+                  e.preventDefault();
+                  return;
+            }
+        }
+
+    </script>
+    <table width="100%" role="presentation"><tbody><tr><td>
+        <div style="width:110px; text-align:right; float:left; margin-bottom:2px;"><span style="color:red">*</span> Logon Name:</div>
+        <span style="padding-left:7px;">
+            <input type="hidden" id="LoginForm1_txtLogonName_clientState" name="LoginForm1_txtLogonName_clientState" value="|0|01||" style=""><input title="Logon Name field" id="LoginForm1_txtLogonName" onkeyup="SetBackGroundColor(this, 'White', 'Yellow');" aria-required="true" name="LoginForm1_txtLogonName" class="igte_Edit" type="text" style="background-color: yellow; height: 20px; width: 150px;">
+			<span id="LoginForm1_RequiredFieldValidator1" style="color:Red;visibility:hidden;">Required!</span>
+        </span>
+    </td></tr>
+    <tr><td style="padding-top: 2px;">
+        <div style="width:110px; text-align:right;float:left; margin-bottom:2px;"><span style="color:red">*</span> Password:</div>
+        <span style="padding-left:7px;">
+            <input type="hidden" id="LoginForm1_txtPassword_clientState" name="LoginForm1_txtPassword_clientState" value="|0|01||" style=""><input title="Password field" id="LoginForm1_txtPassword" onkeyup="SetBackGroundColor(this, 'White', 'Yellow');" aria-required="true" name="LoginForm1_txtPassword" class="igte_Edit" type="password" style="background-color: yellow; height: 20px; width: 150px;">
+			<span id="LoginForm1_RequiredFieldValidator2" style="color:Red;visibility:hidden;">Required!</span>
+        </span>
+    </td></tr>
+    <tr><td>
+        <div style="width:322px; text-align:right;">
+            <div style="float:right; padding-left:5px; text-align:left;">
+				<fieldset aria-label="Login Type" style="border: 0px;">
+            <div style="min-height: 24px;"><input id="LoginForm1_rdoPubCpu" type="radio" name="ctl00$LoginForm1$logonType" value="rdoPubCpu" checked="checked" style=""><label for="LoginForm1_rdoPubCpu">This is a Public Computer</label></div>
+            <input id="LoginForm1_rdoPvtCpu" type="radio" name="ctl00$LoginForm1$logonType" value="rdoPvtCpu" style=""><label for="LoginForm1_rdoPvtCpu">This is a Private Computer</label>
+				</fieldset>
+            </div>
+        </div>
+    </td></tr>
+    <tr><td align="center">
+        
+    </td></tr>
+    <tr><td align="center">
+       
+<table role="presentation" cellspacing="0" cellpadding="0" id="LoginForm1_btnLogon__2" style="display:inline-table;width:120px;" ig_b="LoginForm1_btnLogon"><tbody ig_b="LoginForm1_btnLogon"><tr ig_b="LoginForm1_btnLogon"><td ig_b="LoginForm1_btnLogon">
+	<table role="presentation" cellspacing="0" cellpadding="0" id="LoginForm1_btnLogon__1" style="table-layout:fixed;cursor:Default;width:120px;height:24px;border-style:Solid;border-width:1px;border-color:#F0F0F0 #707070 #707070 #F0F0F0;" ig_b="LoginForm1_btnLogon">
+		<tbody ig_b="LoginForm1_btnLogon"><tr ig_b="LoginForm1_btnLogon"><td nowrap="nowrap" id="LoginForm1_btnLogon__5" style="overflow:hidden;background-color:buttonface;padding:0px 1px 1px 0px;border-width:1px;border-style:Solid;border-color:White #A0A0A0 #A0A0A0 White;" align="Center" valign="Middle" ig_b="LoginForm1_btnLogon">
+			<span unselectable="on" id="LoginForm1_btnLogon__3" style="border:0px;background:none;font-family:Arial;font-size:10pt;" ig_b="LoginForm1_btnLogon"><u ig_b="LoginForm1_btnLogon">L</u>ogon</span>
+			<input id="LoginForm1_btnLogon" type="submit" size="0" style="font-size: 2px; padding: 0px; z-index: -1; border: 0px; background: transparent; outline: 0px; width: 1px; height: 1px;" name="ctl00$LoginForm1$btnLogon" value="Logon" accesskey="L" ig_b="LoginForm1_btnLogon">
+		</td></tr>
+	</tbody></table>
+</td></tr></tbody></table>
+        <div style="width:267px; text-align:right; height:10px;">
+         </div>
+    </td></tr>
+    <tr><td align="center">
+        
+    </td></tr>
+    <tr><td align="center">
+        
+    </td></tr></tbody></table>
+</div>
+
+
+
+
+                
+
+            </div> 
+            <script type="text/javascript">
+                function displayLoginWindow() {
+                    var obj = document.getElementById("loginWindow");
+                    obj.style.visibility = "visible";
+                    obj.style.opacity = 100;
+                    obj.style.pointerEvents = "all";
+                    setLoginFocus();
+                }
+                function closeLoginWindow() {
+                    var obj = document.getElementById("loginWindow");
+                	obj.style.opacity = 0;
+                    obj.style.visibility = "hidden";
+                    obj.style.pointerEvents = "none";
+                }
+
+            </script>
+            <br>
+        </div>
+    <input type="hidden" name="ctl00$_IG_CSS_LINKS_" id="_IG_CSS_LINKS_" value="~/Style/style.css|~/Style/styleforsearch.css|~/favicon.ico|~/localization/styleFromCounty.css|ig_res/Default/ig_texteditor.css|ig_res/Default/ig_datamenu.css|ig_res/ElectricBlue/ig_dialogwindow.css|ig_res/ElectricBlue/ig_datamenu.css|ig_res/ElectricBlue/ig_shared.css|ig_res/Default/ig_shared.css" style="">
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("LoginForm1_RequiredFieldValidator1"), document.getElementById("LoginForm1_RequiredFieldValidator2"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var LoginForm1_RequiredFieldValidator1 = document.all ? document.all["LoginForm1_RequiredFieldValidator1"] : document.getElementById("LoginForm1_RequiredFieldValidator1");
+LoginForm1_RequiredFieldValidator1.controltovalidate = "LoginForm1_txtLogonName";
+LoginForm1_RequiredFieldValidator1.errormessage = "Required!";
+LoginForm1_RequiredFieldValidator1.validationGroup = "logon";
+LoginForm1_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+LoginForm1_RequiredFieldValidator1.initialvalue = "";
+var LoginForm1_RequiredFieldValidator2 = document.all ? document.all["LoginForm1_RequiredFieldValidator2"] : document.getElementById("LoginForm1_RequiredFieldValidator2");
+LoginForm1_RequiredFieldValidator2.controltovalidate = "LoginForm1_txtPassword";
+LoginForm1_RequiredFieldValidator2.errormessage = "Required!";
+LoginForm1_RequiredFieldValidator2.validationGroup = "logon";
+LoginForm1_RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+LoginForm1_RequiredFieldValidator2.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        Sys.Application.add_init(function() {
+    $create(Infragistics.Web.UI.WebDataMenu, {"id":"Header1_WebDataMenu1","name":"WebDataMenu1","props":[[[,,,,,],{"c":{"mihIcon":"igdm_ElectricBlueMenuItemHorizontalIcon","miv":"igdm_ElectricBlueMenuItemVertical","mivSelected":"igdm_ElectricBlueMenuItemVerticalSelected","mivIcon":"igdm_ElectricBlueMenuItemVerticalIcon","mgv":"igdm_ElectricBlueMenuGroupVertical","mivRootSelected":"igdm_ElectricBlueMenuItemVerticalRootSelected","mivParent":"igdm_ElectricBlueMenuItemVerticalParent","ocs":1,"mivRootLink":"igdm_ElectricBlueMenuItemVerticalRootLink","mihRootActive":"igdm_ElectricBlueMenuItemHorizontalRootActive","vse":0,"mihRoot":"igdm_ElectricBlueMenuItemHorizontalRoot","mgh":"igdm_ElectricBlueMenuGroupHorizontal","mihRootDisabled":"igdm_ElectricBlueMenuItemHorizontalRootDisabled","cmonc":true,"mivRootActive":"igdm_ElectricBlueMenuItemVerticalRootActive","aoh":false,"mivParentLink":"igdm_ElectricBlueMenuItemVerticalParentLink","subMenuClosingDelay":0,"mivRoot":"igdm_ElectricBlueMenuItemVerticalRoot","enableScrolling":false,"enabled":true,"uid":"ctl00$Header1$WebDataMenu1","mihActive":"igdm_ElectricBlueMenuItemHorizontalActive","mihRootLink":"igdm_ElectricBlueMenuItemHorizontalRootLink","pi":"[]","tabIndex":"20","mhDisabled":"igdm_ElectricBlueControlHorizontalDisabled","mivRootDisabled":"igdm_ElectricBlueMenuItemVerticalRootDisabled","mihParentLink":"igdm_ElectricBlueMenuItemHorizontalParentLink","mivActive":"igdm_ElectricBlueMenuItemVerticalActive","subMenuOpeningDelay":0,"mihRootHover":"igdm_ElectricBlueMenuItemHorizontalRootHover","mvDisabled":"igdm_ElectricBlueControlVerticalDisabled","mghRoot":"igdm_ElectricBlueMenuGroupHorizontalRoot","_pi":"[\"ig_res/Default/images/ig_ajaxIndicator.gif\",,,\"ig_AjaxIndicator\",,1,,,,\"ig_AjaxIndicatorBlock\",,3,,3,\"Async post\"]","selectedItemAdr":"0","mihHover":"igdm_ElectricBlueMenuItemHorizontalHover","mihRootSelected":"igdm_ElectricBlueMenuItemHorizontalRootSelected","mih":"igdm_ElectricBlueMenuItemHorizontal","mvActive":"igdm_ElectricBlueControlVerticalActive","mivRootHover":"igdm_ElectricBlueMenuItemVerticalRootHover","mivDisabled":"igdm_ElectricBlueMenuItemVerticalDisabled","mivLink":"igdm_ElectricBlueMenuItemVerticalLink","mihParent":"igdm_ElectricBlueMenuItemHorizontalParent","mgvRoot":"igdm_ElectricBlueMenuGroupVerticalRoot","mihDisabled":"igdm_ElectricBlueMenuItemHorizontalDisabled","mhActive":"igdm_ElectricBlueControlHorizontalActive","mihSelected":"igdm_ElectricBlueMenuItemHorizontalSelected","mivHover":"igdm_ElectricBlueMenuItemVerticalHover","mihLink":"igdm_ElectricBlueMenuItemHorizontalLink"}}],[[[[,,,,,,,,,,,,,,,,,,,,,,,,,"mainMenuItem",,,,,,,]],,]],[{'0':[[327889,,,,"Welcome","9997","_welcome","~/","",,,,,]],'1':[[,,,,"",,,"","",,,,1,]],'2':[[,,,,"Marriage","9998","MARRIAGE","","",,,,,]],'2.0':[[,,,,"Online Marriage App","9998","MARRIAGE43","~/Marriage/MarriageApplication.aspx","",,,,,]],'2.1':[[,,,,"Search Marriage Index","9998","MARRIAGESEARCH_INDEX","~/Marriage/SearchEntry.aspx","",,,,,]],'3':[[,,,,"",,,"","",,,,1,]],'4':[[,,,,"Official Public Records","9998","OPR","","",,,,,]],'4.0':[[,,,,"Grantee List","9998","OPRGRANTEE_LIST","~/RealEstate/ListOfGrantees.aspx","",,,,,]],'4.1':[[,,,,"Grantor List","9998","OPRGRANTOR_LIST","~/RealEstate/ListOfGrantors.aspx","",,,,,]],'4.2':[[,,,,"Search Real Estate Index","9998","OPRSEARCH_INDEX","~/RealEstate/SearchEntry.aspx","",,,,,]],'4.3':[[,,,,"Subdivision List","9998","OPRSUBDIV_LIST","~/RealEstate/ListOfSubdivisions.aspx","",,,,,]],'5':[[,,,,"",,,"","",,,,1,]],'6':[[,,,,"Uniform Commercial Code","9998","UCC","","",,,,,]],'6.0':[[,,,,"Search UCC Index","9998","UCCSEARCH_INDEX","~/UCC/SearchEntry.aspx","",,,,,]],'7':[[,,,,"",,,"","",,,,1,]],'8':[[,,,,"FAQ","9999","_faq","~/localization/faq.aspx","",,,,,]]},{'-1':[[,,,,,,,,,,,,,,,,,,0,,,,,,"-1"]],'0':[[,,,,,,,,,,,,,,,,,,,,,,,,"0"]],'1':[[,,,,,,,,,,,,,,,,,,,,,,,,"1"]],'2':[[,,,,,,,,,,,,,,,,,,,,,,,,"2"]],'2.0':[[,,,,,,,,,,,,,,,,,,,,,,,,"2.0"]],'2.1':[[,,,,,,,,,,,,,,,,,,,,,,,,"2.1"]],'3':[[,,,,,,,,,,,,,,,,,,,,,,,,"3"]],'4':[[,,,,,,,,,,,,,,,,,,,,,,,,"4"]],'4.0':[[,,,,,,,,,,,,,,,,,,,,,,,,"4.0"]],'4.1':[[,,,,,,,,,,,,,,,,,,,,,,,,"4.1"]],'4.2':[[,,,,,,,,,,,,,,,,,,,,,,,,"4.2"]],'4.3':[[,,,,,,,,,,,,,,,,,,,,,,,,"4.3"]],'5':[[,,,,,,,,,,,,,,,,,,,,,,,,"5"]],'6':[[,,,,,,,,,,,,,,,,,,,,,,,,"6"]],'6.0':[[,,,,,,,,,,,,,,,,,,,,,,,,"6.0"]],'7':[[,,,,,,,,,,,,,,,,,,,,,,,,"7"]],'8':[[,,,,,,,,,,,,,,,,,,,,,,,,"8"]]}],["Initialize:webmnu_accessibility"]]}, null, null, $get("Header1_WebDataMenu1"));
+});
+Sys.Application.add_init(function() {
+    $create(Infragistics.Web.UI.WebDialogWindow, {"id":"dlgOptionWindow","name":"dlgOptionWindow","props":[[[,3,,,"700px","550px",1,1,0,0,,0],{"c":{"uid":"ctl00$dlgOptionWindow","mbc":"igdw_ElectricBlueModalBackground"}}],[[[[,"Copy Options",,]],[[[[],{"c":{"h":"ig_res/ElectricBlue/images/igdw_CloseHover.gif","i":"ig_res/ElectricBlue/images/igdw_Close.gif","s":"i","a":"Close","p":"ig_res/ElectricBlue/images/igdw_CloseMouseDown.gif"}}],,],[[[]],,],[[[]],,]],],[[[,,,,]],,]],,["WindowStateChanged:dlgOptionWindow_WindowStateChanged","Initialize:dlgInit"]]}, null, null, $get("dlgOptionWindow"));
+});
+Sys.Application.add_init(function() {
+    $create(Infragistics.Web.UI.WebDataMenu, {"id":"RangeContextMenu","name":"RangeContextMenu","props":[[[,,,,1,],{"c":{"mihIcon":"igdm_MenuItemHorizontalIcon","miv":"igdm_MenuItemVertical","mivSelected":"igdm_MenuItemVerticalSelected","mivIcon":"igdm_MenuItemVerticalIcon","mgv":"igdm_MenuGroupVertical","mivRootSelected":"igdm_MenuItemVerticalRootSelected","mivParent":"igdm_MenuItemVerticalParent","ocs":1,"mivRootLink":"igdm_MenuItemVerticalRootLink","mihRootActive":"igdm_MenuItemHorizontalRootActive","mihRoot":"igdm_MenuItemHorizontalRoot","mgh":"igdm_MenuGroupHorizontal","mihRootDisabled":"igdm_MenuItemHorizontalRootDisabled","cmonc":true,"mivRootActive":"igdm_MenuItemVerticalRootActive","aoh":true,"mivParentLink":"igdm_MenuItemVerticalParentLink","subMenuClosingDelay":0,"mivRoot":"igdm_MenuItemVerticalRoot","enableScrolling":true,"enabled":true,"uid":"ctl00$RangeContextMenu","mihActive":"igdm_MenuItemHorizontalActive","mihRootLink":"igdm_MenuItemHorizontalRootLink","pi":"[]","tabIndex":"0","mhDisabled":"igdm_ControlHorizontalDisabled","mivRootDisabled":"igdm_MenuItemVerticalRootDisabled","mihParentLink":"igdm_MenuItemHorizontalParentLink","mivActive":"igdm_MenuItemVerticalActive","subMenuOpeningDelay":0,"mihRootHover":"igdm_MenuItemHorizontalRootHover","mvDisabled":"igdm_ControlVerticalDisabled","mghRoot":"igdm_MenuGroupHorizontalRoot","mihHover":"igdm_MenuItemHorizontalHover","mihRootSelected":"igdm_MenuItemHorizontalRootSelected","mih":"igdm_MenuItemHorizontal","mvActive":"igdm_ControlVerticalActive","mivRootHover":"igdm_MenuItemVerticalRootHover","mivDisabled":"igdm_MenuItemVerticalDisabled","mivLink":"igdm_MenuItemVerticalLink","mihParent":"igdm_MenuItemHorizontalParent","mgvRoot":"igdm_MenuGroupVerticalRoot","mihDisabled":"igdm_MenuItemHorizontalDisabled","mhActive":"igdm_ControlHorizontalActive","mihSelected":"igdm_MenuItemHorizontalSelected","mivHover":"igdm_MenuItemVerticalHover","mihLink":"igdm_MenuItemHorizontalLink"}}],[[[[,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]],,]],[{'0':[[,,,,"Today",,"TODAY","javascript:RangeContextMenu_ItemClick();","",,,,,]],'1':[[,,,,"Yesterday",,"YESTERDAY","javascript:RangeContextMenu_ItemClick();","",,,,,]],'2':[[,,,,"This Week",,"THISWEEK","javascript:RangeContextMenu_ItemClick();","",,,,,]],'3':[[,,,,"Last Week",,"LASTWEEK","javascript:RangeContextMenu_ItemClick();","",,,,,]],'4':[[,,,,"This Month",,"THISMONTH","javascript:RangeContextMenu_ItemClick();","",,,,,]],'5':[[,,,,"Last Month",,"LASTMONTH","javascript:RangeContextMenu_ItemClick();","",,,,,]]},{'-1':[[,,,,,,,,,,,,,,,,,,,,,,,,"-1"]],'0':[[,,,,,,,,,,,,,,,,,,,,,,,,"0"]],'1':[[,,,,,,,,,,,,,,,,,,,,,,,,"1"]],'2':[[,,,,,,,,,,,,,,,,,,,,,,,,"2"]],'3':[[,,,,,,,,,,,,,,,,,,,,,,,,"3"]],'4':[[,,,,,,,,,,,,,,,,,,,,,,,,"4"]],'5':[[,,,,,,,,,,,,,,,,,,,,,,,,"5"]]}],[]]}, null, null, $get("RangeContextMenu"));
+});
+Sys.Application.add_init(function() {
+    $create(Infragistics.Web.UI.WebTextEditor, {"id":"LoginForm1_txtLogonName","name":"LoginForm1_txtLogonName","props":[[[],{"c":{"prop":"1,64,,0,1,1,,,3,1,,,,6,,200,,2038:2040:2032,igte_Focus,igte_Hover,igte_NullText,","prop1":"","uid":"ctl00$LoginForm1$txtLogonName"}}],,,[]]}, null, null, $get("LoginForm1_txtLogonName"));
+});
+
+document.getElementById('LoginForm1_RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('LoginForm1_RequiredFieldValidator1'));
+}
+Sys.Application.add_init(function() {
+    $create(Infragistics.Web.UI.WebTextEditor, {"id":"LoginForm1_txtPassword","name":"LoginForm1_txtPassword","props":[[[],{"c":{"prop":"1,64,,0,1,1,,,3,1,,,,6,,200,,2038:2040:2032,igte_Focus,igte_Hover,igte_NullText,","prop1":"","uid":"ctl00$LoginForm1$txtPassword"}}],,,[]]}, null, null, $get("LoginForm1_txtPassword"));
+});
+
+document.getElementById('LoginForm1_RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('LoginForm1_RequiredFieldValidator2'));
+}
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+try{igbut_init("LoginForm1_btnLogon",["1,1,1,2,,,,,1,1,,logon,","pd;0px 1px 1px 0px;bc;#F0F0F0 #707070 #707070 #F0F0F0;ibc;White #A0A0A0 #A0A0A0 White;bg;buttonface;clr;","","bg;Orange","pd;1px 0px 0px 1px;bc;#707070 #D0D0D0 #D0D0D0 #707070;ibc;#A0A0A0 #F0F0F0 #F0F0F0 #A0A0A0",""]);}catch(e){status="Can not init button";}
+//]]>
+</script><div style="display: none; visibility: hidden;"></div></form>  
+    </div>
+  
+
+    <div id="searchNotice" class="modalDialog">
+        <div>
+            <h2>Searching for records...</h2>
+            <div style="width:100%; text-align:center;"><img id="_progInd" src="images/progressIndTrans.gif" alt="Progress Indicator"></div>
+            <br>
+            To cancel, click 'Cancel', or press the 'Escape(ESC)' key.
+           <p style="text-align: right;">  <a href="#close" id="endSearch" class="btn-modal" onclick="clearSearchIndicator(event);">Cancel</a></p>
+
+        </div>
+        <script type="text/javascript">
+            /*if (window.addEventListener) {
+                window.addEventListener('stop', clearSearchIndicator, false);
+            }
+            else if (window.attachEvent) {
+                window.attachEvent('onstop', clearSearchIndicator);
+            }
+            document.onstop = clearSearchIndicator;*/
+
+            function checkForEsc(event) {
+                var key;
+                if (window.event) {
+                    key = window.event.keyCode;
+                }
+                else {
+                    key = event.which;
+                }
+                if (key == 27) {
+                    clearSearchIndicator();
+                }
+            }
+            function displaySearchIndicator() {
+            	var obj = document.getElementById("searchNotice");
+            	obj.style.visibility = "visible";
+                obj.style.opacity = 100;
+                obj.style.pointerEvents = "all";
+                if (window.addEventListener) {
+                    window.addEventListener('keyup', checkForEsc, false);
+                }
+                else if (window.attachEvent) {
+                    window.attachEvent('onkeyup', checkForEsc);
+                }
+
+            }
+            function clearSearchIndicator(e) {
+                var obj = document.getElementById("searchNotice");
+                obj.style.opacity = 0;
+                obj.style.visibility = "hidden";
+                obj.style.pointerEvents = "none";
+                stopWindow();
+                if (window.removeEventListener) {
+                    window.removeEventListener('keyup', checkForEsc, false);
+                }
+                else if (window.detachEvent) {
+                    window.detachEvent('onkeyup', checkForEsc);
+                }
+            }
+            function stopWindow() {
+                if (window.stop) {
+                    window.stop();
+                }
+                else {
+                    try { document.execCommand("Stop"); } catch (e) { };
+                    var e = document.createEvent("KeyboardEvent"); 
+                    e.initKeyboardEvent("keydown", true, true, window, "27", 0, "", false, "");
+                    document.dispatchEvent(e); 
+                }
+            }
+            function NewSearch_Click(oButton, oEvent) {
+                window.setTimeout("displaySearchIndicator();", 450);
+                var o = document.getElementById("_progInd");
+                window.setTimeout("document.getElementById('_progInd').src='" + o.src + "';", 200);
+                try { return Search_Click(oButton, oEvent); }
+                catch (e) { }
+            }
+        </script>
+    </div>
+
+    <div id="openModal" class="modalDialog">
+        <div>
+            <h2>Session Timeout Warning</h2>
+            <p>Your session will end in approximately one minute unless you click "Keep Working" to continue.<br>Or you may click "End Session" if you are done.</p>
+           <p style="text-align: right;">  <a href="#close" id="EndSession" class="btn-modal" onclick="closeSession();"> End Session</a>
+           &nbsp;&nbsp;&nbsp;<a href="#close" id="KeepWorking" class="btn-modal" onclick="clearSessionWarning();"> Keep Working</a>   </p>
+        </div>
+            <iframe id="ifrKeepAlive" tabindex="-1" src="javascript:'&lt;html lang=&quot;en&quot; /&gt;'" allowtransparency="true" style="height:0px; width:0px;" frameborder="0" title="session keep-alive helper"></iframe>
+
+        <script type="text/javascript">
+            try{
+                //window.setTimeout("displaySessionWarning();", 778200);
+            }
+            catch (e){{document.write('<!-- init timeout failed-->');}}
+            var dialogTO;
+            function displaySessionWarning() {
+                dialogTO = window.setTimeout("closeSession();", 59000);
+                var obj = document.getElementById("openModal");
+                obj.style.visibility = "visible";
+                obj.style.opacity = 100;
+                obj.style.pointerEvents = "all";
+                if (_imgWindow == null){
+                    //alert('no img');
+                }
+                else {
+                    _imgWindow.displaySessionWarning();
+                }
+            }
+            function clearSessionWarning() {
+                _mainSetSessTimeout();
+                window.clearTimeout(dialogTO);
+                var obj = document.getElementById("openModal");
+            	obj.style.opacity = 0;
+                obj.style.visibility = "hidden";
+                obj.style.pointerEvents = "none";
+                var obj = document.getElementById("ifrKeepAlive");
+                obj.src = "/users/default.aspx?m=act&rnd=" + Math.random().toString();
+            }
+            function closeSession(){
+                _mainSetSessTimeout();
+                window.clearTimeout(dialogTO);
+                try{closePopup();}catch(e){}
+                if (_isLoggedOn){
+                    document.location.href="/logout.aspx";
+                }
+                else {
+                    document.location.href="/?session+timeout+2";
+                }
+            }
+        </script>
+    </div>
+
+
+
+
+
+<div class="ig_Control igdm_ControlVertical" id="RangeContextMenu" style="position: absolute; z-index: 12000; top: -1000px; left: -1000px; display: inline-block; visibility: hidden;"><input type="button" tabindex="0" value="" style="position: absolute; background: transparent; border: 0px; padding: 0px; outline: none; height: 1px; width: 1px; z-index: -1; margin-top: 84px; margin-left: 52px;">
+	<div class="igdm_MenuScrollContainer igdm_MenuScrollContainerRootVertical" data-ig="x:1944750471.0:mkr:sd" style="position:relative;z-index:0;" mkr="sd">
+		<a class="igdm_MenuScrollButton igdm_MenuScrollerTop" title="Scroll up" href="javascript:void(0)" tabindex="-1" data-ig="x:1944750471.1:mkr:sb" style="z-index:500;top:0px;left:0px;display:none;" mkr="sb"><span class="igdm_MenuScrollIcon igdm_MenuScrollIconTop" data-ig="x:1944750471.2:mkr:si" unselectable="on" mkr="si"></span></a><ul class="igdm_MenuGroupVerticalRoot " style="position:relative;display:block;">
+			<li data-ig="x:1944750471.3:adr:0" class="igdm_MenuItemVerticalRoot" unselectable="on" adr="0"><a accesskey="" href="javascript:RangeContextMenu_ItemClick();" tabindex="-1" class="igdm_MenuItemVerticalRootLink " onclick="{return false;}"><span tabindex="-1" unselectable="on">Today</span></a></li><li data-ig="x:1944750471.4:adr:1" class="igdm_MenuItemVerticalRoot" unselectable="on" adr="1"><a href="javascript:RangeContextMenu_ItemClick();" tabindex="-1" class="igdm_MenuItemVerticalRootLink " onclick="{return false;}"><span tabindex="-1" unselectable="on">Yesterday</span></a></li><li data-ig="x:1944750471.5:adr:2" class="igdm_MenuItemVerticalRoot" unselectable="on" adr="2"><a href="javascript:RangeContextMenu_ItemClick();" tabindex="-1" class="igdm_MenuItemVerticalRootLink " onclick="{return false;}"><span tabindex="-1" unselectable="on">This Week</span></a></li><li data-ig="x:1944750471.6:adr:3" class="igdm_MenuItemVerticalRoot" unselectable="on" adr="3"><a href="javascript:RangeContextMenu_ItemClick();" tabindex="-1" class="igdm_MenuItemVerticalRootLink " onclick="{return false;}"><span tabindex="-1" unselectable="on">Last Week</span></a></li><li data-ig="x:1944750471.7:adr:4" class="igdm_MenuItemVerticalRoot" unselectable="on" adr="4"><a href="javascript:RangeContextMenu_ItemClick();" tabindex="-1" class="igdm_MenuItemVerticalRootLink " onclick="{return false;}"><span tabindex="-1" unselectable="on">This Month</span></a></li><li data-ig="x:1944750471.8:adr:5" class="igdm_MenuItemVerticalRoot" unselectable="on" adr="5"><a href="javascript:RangeContextMenu_ItemClick();" tabindex="-1" class="igdm_MenuItemVerticalRootLink " onclick="{return false;}"><span tabindex="-1" unselectable="on">Last Month</span></a></li>
+		</ul><a class="igdm_MenuScrollButton igdm_MenuScrollerBottom" title="Scroll down" href="javascript:void(0)" tabindex="-1" data-ig="x:1944750471.9:mkr:sb" style="z-index:500;left:0px;bottom:0px;display:none;" mkr="sb"><span class="igdm_MenuScrollIcon igdm_MenuScrollIconBottom" data-ig="x:1944750471.10:mkr:si" unselectable="on" mkr="si"></span></a>
+	</div>
+</div><span id="LoginForm1_txtLogonName:v:" style="position: absolute; display: none; visibility: hidden;"></span><span id="LoginForm1_txtPassword:v:" style="position: absolute; display: none; visibility: hidden;"></span><div class="ig_ElectricBlueControl igdm_ElectricBlueControlHorizontal" style="position: absolute; top: -10000px; left: -10000px; display: block; white-space: nowrap; border: solid; width: auto; height: auto; overflow: auto;"><div class="igdm_ElectricBlueMenuGroupHorizontalRoot " style="width: auto; height: auto; overflow: auto;"></div></div></body></html>
